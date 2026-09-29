@@ -236,35 +236,51 @@ const WA_LINK = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + WA_MESSAGE;
     });
   }
 
-  /* ---------- Shop product grid ---------- */
-  var grid = $("productGrid");
-  if (grid && hasCatalog) {
-    grid.innerHTML = PRODUCTS.map(function (p) {
-      var off = Math.round((1 - p.price / p.mrp) * 100);
-      return '<article class="product-card">' +
-        '<div class="pc-media">' +
-          '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy" onerror="eloraProdFallback(this)" data-ph="' + p.name + '" />' +
-          (p.badge ? '<span class="pc-badge">' + p.badge + '</span>' : '') +
+  /* ---------- Shop product grid / featured kits ---------- */
+  function productCardHTML(p) {
+    var off = Math.round((1 - p.price / p.mrp) * 100);
+    return '<article class="product-card">' +
+      '<div class="pc-media">' +
+        '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy" onerror="eloraProdFallback(this)" data-ph="' + p.name + '" />' +
+        (p.badge ? '<span class="pc-badge">' + p.badge + '</span>' : '') +
+      '</div>' +
+      '<div class="pc-body">' +
+        '<h3>' + p.name + '</h3>' +
+        '<p class="pc-tag">' + p.tagline + '</p>' +
+        '<details class="pc-contents"><summary>What\u2019s inside</summary><ul>' +
+          p.contents.map(function (c) { return "<li>" + c + "</li>"; }).join("") +
+        '</ul></details>' +
+        '<div class="pc-price-row">' +
+          '<span class="pc-price">' + formatINR(p.price) + '</span>' +
+          '<span class="pc-mrp">' + formatINR(p.mrp) + '</span>' +
+          '<span class="pc-off">' + off + '% off</span>' +
         '</div>' +
-        '<div class="pc-body">' +
-          '<h3>' + p.name + '</h3>' +
-          '<p class="pc-tag">' + p.tagline + '</p>' +
-          '<details class="pc-contents"><summary>What\u2019s inside</summary><ul>' +
-            p.contents.map(function (c) { return "<li>" + c + "</li>"; }).join("") +
-          '</ul></details>' +
-          '<div class="pc-price-row">' +
-            '<span class="pc-price">' + formatINR(p.price) + '</span>' +
-            '<span class="pc-mrp">' + formatINR(p.mrp) + '</span>' +
-            '<span class="pc-off">' + off + '% off</span>' +
-          '</div>' +
-          '<button type="button" class="btn" data-add="' + p.id + '" style="width:100%">Add to Cart</button>' +
-        '</div></article>';
-    }).join("");
-    grid.querySelectorAll("[data-add]").forEach(function (btn) {
+        '<button type="button" class="btn" data-add="' + p.id + '" style="width:100%">Add to Cart</button>' +
+      '</div></article>';
+  }
+
+  function wireAddButtons(scope) {
+    scope.querySelectorAll("[data-add]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         addToCart(btn.getAttribute("data-add"), 1);
       });
     });
+  }
+
+  var grid = $("productGrid");
+  if (grid && hasCatalog) {
+    grid.innerHTML = PRODUCTS.map(productCardHTML).join("");
+    wireAddButtons(grid);
+  }
+
+  /* Featured kits strip on the home page (3 of the 5) */
+  var featGrid = $("featuredGrid");
+  if (featGrid && hasCatalog) {
+    var picks = ["classic", "lavender", "rosegold"]
+      .map(function (id) { return getProduct(id); })
+      .filter(function (p) { return !!p; });
+    featGrid.innerHTML = picks.map(productCardHTML).join("");
+    wireAddButtons(featGrid);
   }
 
   /* ---------- Checkout page ---------- */

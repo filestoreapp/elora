@@ -9,7 +9,7 @@ const PRODUCTS = [
     mrp: 399,
     img: "assets/hero.png",
     badge: "Bestseller",
-    tagline: "The original emergency pouch — 8 essentials in one chic zip pouch.",
+    tagline: "The original emergency pouch — 8 essentials in one chic blush zip pouch.",
     contents: [
       "Sanitary pads ×2",
       "Panty liners ×2",
@@ -27,7 +27,7 @@ const PRODUCTS = [
     mrp: 449,
     img: "assets/pouch-lavender.png",
     badge: "New",
-    tagline: "Same 8 essentials in a dreamy lavender pouch.",
+    tagline: "The 8 essentials in a dreamy lavender pouch.",
     contents: [
       "Sanitary pads ×2",
       "Panty liners ×2",
@@ -39,18 +39,36 @@ const PRODUCTS = [
     ]
   },
   {
-    id: "travel",
-    name: "Travel Ready Kit",
+    id: "rosegold",
+    name: "Rose Gold Kit",
+    price: 349,
+    mrp: 449,
+    img: "assets/pouch-rosegold.png",
+    badge: "New",
+    tagline: "The 8 essentials with a luxe rose-gold finish.",
+    contents: [
+      "Sanitary pads ×2",
+      "Panty liners ×2",
+      "Pocket tissues",
+      "Wet wipes ×4",
+      "Hair ties ×2",
+      "Safety pins ×2",
+      "Band-aids ×3"
+    ]
+  },
+  {
+    id: "mint",
+    name: "Mint Travel Kit",
     price: 499,
     mrp: 649,
-    img: "assets/pouch-sage.png",
+    img: "assets/pouch-mint.png",
     badge: null,
-    tagline: "Double the essentials in a roomy sage pouch — for trips and long days.",
+    tagline: "Double the essentials in a roomy mint pouch — made for trips and long days.",
     contents: [
-      "Sanitary pads ×4",
-      "Panty liners ×4",
+      "Sanitary pads ×4 (double)",
+      "Panty liners ×4 (double)",
       "Pocket tissues ×2",
-      "Wet wipes ×8",
+      "Wet wipes ×8 (double)",
       "Hair ties ×3",
       "Safety pins ×3",
       "Band-aids ×5"

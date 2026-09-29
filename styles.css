@@ -929,6 +929,44 @@ h3 { font-size: 1.08rem; font-weight: 600; }
 .success-panel h2 { margin: 0.8rem 0 0.5rem; }
 .success-panel p { color: var(--plum-soft); margin-bottom: 1.6rem; }
 
+/* ---------- Cross-page nav additions ---------- */
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.2rem;
+  color: var(--rose-deep);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+.back-link:hover { text-decoration: underline; }
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer-links a {
+  color: #f3dcea;
+  text-decoration: none;
+  font-size: 0.93rem;
+  opacity: 0.9;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: #fff; text-decoration: underline; }
+.footer .wordmark { text-decoration: none; }
+
+/* Featured kits strip on the home page */
+.featured-grid { padding: 2.4rem 0 2rem; }
+.view-all { text-align: center; padding-bottom: 1rem; }
+
+/* Checkout success actions */
+.success-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 /* ---------- Shop/checkout responsive ---------- */
 @media (min-width: 720px) {
   .product-grid { grid-template-columns: repeat(2, 1fr); }

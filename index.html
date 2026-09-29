@@ -26,7 +26,7 @@
       d.innerHTML = '<span>' + (img.getAttribute('data-ph') || 'Elora') + '</span>';
       img.replaceWith(d);
     };
-    // Product images (pouch-lavender/pouch-sage may not exist yet) fall back to hero.png first, then the placeholder
+    // Product images (pouch-lavender/pouch-rosegold/pouch-mint may not exist yet) fall back to hero.png first, then the placeholder
     window.eloraProdFallback = function (img) {
       if (img.dataset.fb) { window.eloraImgFallback(img); }
       else { img.dataset.fb = '1'; img.src = 'assets/hero.png'; }
@@ -38,8 +38,9 @@
   <!-- ============ NAV ============ -->
   <header class="nav" id="nav">
     <div class="container nav-inner">
-      <a href="#top" class="wordmark">ELORA</a>
+      <a href="index.html" class="wordmark">ELORA</a>
       <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="index.html" class="active">Home</a>
         <a href="#inside">What's Inside</a>
         <a href="#why">Why Elora</a>
         <a href="#reviews">Reviews</a>
@@ -69,7 +70,7 @@
           <h1 class="reveal">Your Pocket-Sized<br /><em>Peace of Mind.</em></h1>
           <p class="sub reveal">A chic little pouch with everything you need for life's little emergencies — period surprises, wardrobe fixes, freshen-ups. Toss it in your bag and forget about it.</p>
           <div class="hero-ctas reveal">
-            <a class="btn" data-wa href="#" target="_blank" rel="noopener">Order on WhatsApp</a>
+            <a class="btn" href="shop.html">Shop the kits</a>
             <a class="btn btn-ghost" href="#inside">See what's inside ↓</a>
           </div>
           <div class="hero-mini reveal">
@@ -177,6 +178,17 @@
       </div>
     </section>
 
+    <!-- ============ FEATURED KITS ============ -->
+    <section class="section" id="featured">
+      <div class="container">
+        <p class="eyebrow reveal">The Kits</p>
+        <h2 class="reveal">Pick your pouch.</h2>
+        <p class="lead reveal">Five kits, one promise: be ready for anything.</p>
+        <div class="product-grid featured-grid" id="featuredGrid"></div>
+        <div class="view-all reveal"><a class="btn btn-ghost" href="shop.html">View all 5 kits →</a></div>
+      </div>
+    </section>
+
     <!-- ============ HOW IT WORKS ============ -->
     <section class="section" id="how">
       <div class="container">
@@ -276,9 +288,14 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div>
-        <p class="wordmark">ELORA</p>
+        <a href="index.html" class="wordmark">ELORA</a>
         <p class="tagline">Be ready for anything.</p>
       </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="checkout.html">Checkout</a>
+      </nav>
       <div class="footer-contact">
         <p>Questions? Say hello on WhatsApp.</p>
         <a data-wa href="#" target="_blank" rel="noopener">Chat with us →</a>
@@ -312,6 +329,7 @@
   </aside>
   <div class="toast" id="toast" role="status"></div>
 
+  <script src="products.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
